@@ -31,6 +31,7 @@
 		27346040165198C400CD66C5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2734603F165198C400CD66C5 /* MobileCoreServices.framework */; };
 		274284CE17B58089006F29FC /* KinveyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274284CD17B58089006F29FC /* KinveyKit.framework */; };
 		2758E13218D09F1100AB0F80 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2758E13118D09F1100AB0F80 /* Social.framework */; };
+		AB06083C1A2DDB9100B902AE /* OfflineDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB06083B1A2DDB9100B902AE /* OfflineDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,8 @@
 		2734603F165198C400CD66C5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		274284CD17B58089006F29FC /* KinveyKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KinveyKit.framework; path = Kinvey/KinveyKit.framework; sourceTree = "<group>"; };
 		2758E13118D09F1100AB0F80 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		AB06083A1A2DDB9100B902AE /* OfflineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineDelegate.h; sourceTree = "<group>"; };
+		AB06083B1A2DDB9100B902AE /* OfflineDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,8 @@
 				273460261651904900CD66C5 /* TestObject.h */,
 				273460271651904900CD66C5 /* TestObject.m */,
 				2734600A16518D5A00CD66C5 /* Supporting Files */,
+				AB06083A1A2DDB9100B902AE /* OfflineDelegate.h */,
+				AB06083B1A2DDB9100B902AE /* OfflineDelegate.m */,
 			);
 			path = "Kinvey Quickstart";
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB06083C1A2DDB9100B902AE /* OfflineDelegate.m in Sources */,
 				2734601016518D5A00CD66C5 /* main.m in Sources */,
 				2734601416518D5A00CD66C5 /* AppDelegate.m in Sources */,
 				2734602016518D5A00CD66C5 /* ViewController.m in Sources */,

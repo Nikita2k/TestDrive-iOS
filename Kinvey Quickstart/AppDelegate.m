@@ -19,14 +19,19 @@
 
 #import "AppDelegate.h"
 #import <KinveyKit/KinveyKit.h>
+#import <KinveyKit/KCSOfflineUpdateDelegate.h>
+#import "OfflineDelegate.h"
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    (void) [[KCSClient sharedClient] initializeKinveyServiceForAppKey:@"<#My App Key#>"
-                                                        withAppSecret:@"<#My App Secret#>"
+    KCSClient *client = [[KCSClient sharedClient] initializeKinveyServiceForAppKey:@"kid_WJJUGRa8D"
+                                                        withAppSecret:@"04b9605212df405a80d48d1fe64e0ef1"
                                                          usingOptions:nil];
+    
+    [client setOfflineDelegate:[OfflineDelegate sharedInstance]];
     return YES;
 }
 

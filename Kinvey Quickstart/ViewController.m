@@ -52,12 +52,13 @@
             // This is the data we'll save
             testObject.name = [[alertView textFieldAtIndex:0] text];
             
-            // Get a reference to a backend collection called "testObjects", which is filled with
-            // instances of TestObject
-            KCSCollection *testObjects = [KCSCollection collectionFromString:@"testObjects" ofClass:[TestObject class]];
-            
             // Create a data store connected to the collection, in order to save and load TestObjects
-            KCSAppdataStore *store = [KCSAppdataStore storeWithCollection:testObjects options:nil];
+            //KCSAppdataStore *store = [KCSAppdataStore storeWithCollection:testObjects options:nil];
+            KCSCachedStore *store = [KCSCachedStore storeWithOptions:@{
+                                               KCSStoreKeyCollectionName : @"testObjects",
+                                               KCSStoreKeyCollectionTemplateClass : [TestObject class],
+                                               KCSStoreKeyCachePolicy : @(KCSCachePolicyNone),
+                                               KCSStoreKeyOfflineUpdateEnabled : @YES}];
             
             // Save our instance to the store
             [store saveObject:testObject withCompletionBlock:^(NSArray *objectsOrNil, NSError *errorOrNil) {
@@ -76,9 +77,10 @@
                     self.objects = [@[testObject] arrayByAddingObjectsFromArray:_objects];
                     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
                 } else {
+                
                     //save failed
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Save failed"
-                                                                    message:[errorOrNil localizedDescription]
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Save to local db"
+                                                                    message:@"Data saved to local db, because server is not available"
                                                                    delegate:self
                                                           cancelButtonTitle:@"Ok"
                                                           otherButtonTitles:nil];
@@ -208,10 +210,13 @@
         
         // Get a reference to a backend collection called "testObjects", which is filled with
         // instances of TestObject
-        KCSCollection *testObjects = [KCSCollection collectionFromString:@"testObjects" ofClass:[TestObject class]];
         
         // Create a data store connected to the collection, in order to save and load TestObjects
-        KCSAppdataStore *store = [KCSAppdataStore storeWithCollection:testObjects options:nil];
+        KCSCachedStore *store = [KCSCachedStore storeWithOptions:@{
+                                                                   KCSStoreKeyCollectionName : @"testObjects",
+                                                                   KCSStoreKeyCollectionTemplateClass : [TestObject class],
+                                                                   KCSStoreKeyCachePolicy : @(KCSCachePolicyNone),
+                                                                   KCSStoreKeyOfflineUpdateEnabled : @YES}];
         
         // Remove our instance from the store
         [store removeObject:objToDelete withCompletionBlock:^(unsigned long count, NSError *errorOrNil) {
@@ -226,8 +231,8 @@
                 [alert show];
             } else {
                 //delete failed
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete failed"
-                                                                message:[errorOrNil localizedDescription]
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Deleted in local db"
+                                                                message:@"Data deleted in local db, because server is not available"
                                                                delegate:self
                                                       cancelButtonTitle:@"Ok"
                                                       otherButtonTitles:nil];
